@@ -46,7 +46,7 @@ Rename-Item -Path $env:LOCALAPPDATA\nvim-data -NewName $env:LOCALAPPDATA\nvim-da
 #### Clone the repository
 
 ```pwsh
-git clone --depth 1 https://github.com/Debajyati/Efficienvim $env:LOCALAPPDATA\nvim
+git clone https://github.com/Debajyati/Efficienvim $env:LOCALAPPDATA\nvim
 nvim
 ```
 ### Tip
