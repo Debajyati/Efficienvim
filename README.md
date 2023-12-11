@@ -22,7 +22,7 @@ If you use Windows then installing in WSL is Recommended.
 
 #### Make a backup of your current nvim and shared folder
 
-```shell
+```bash
 mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak
 ```
