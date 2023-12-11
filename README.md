@@ -6,10 +6,10 @@ After installation, you should remove the `.git` folder so that you can add your
 ## 👀 Requirements
 
 - Make sure you know some basic vim commands.
-- [Nerd Fonts](https://www.nerdfonts.com/font-downloads) (_Optional with manual intervention:_ See [Documentation on customizing icons](https://docs.astronvim.com/Recipes/icons)) <sup>[[1]](#1)</sup>
+- [Nerd Fonts](https://www.nerdfonts.com/font-downloads) (_Optional with manual intervention:_ See [Documentation on customizing icons](https://docs.astronvim.com/Recipes/icons))
 - [Neovim 0.9+ (_Not_ including nightly)](https://github.com/neovim/neovim/releases/tag/stable)
 - A clipboard tool is necessary for the integration with the system clipboard (see [`:help clipboard-tool`](https://neovim.io/doc/user/provider.html#clipboard-tool) for supported solutions)
-- Terminal with true color support (for the default theme, otherwise it is dependent on the theme you are using) <sup>[[2]](#2)</sup>
+- Terminal with true color support (for the default theme, otherwise it is dependent on the theme you are using)
 - Optional Requirements:
   - [ripgrep](https://github.com/BurntSushi/ripgrep) - live grep telescope search (`<leader>ps`)
   - [lazygit](https://github.com/jesseduffield/lazygit) - lazygit ui toggle inside NeoVim (`:LazyGit`)
