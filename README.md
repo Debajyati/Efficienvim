@@ -30,7 +30,7 @@ mv ~/.local/share/nvim ~/.local/share/nvim.bak
 #### Clone the repository
 
 ```bash
-git clone --depth 1 https://github.com/Debajyati/Efficienvim ~/.config/nvim
+git clone https://github.com/Debajyati/Efficienvim ~/.config/nvim
 nvim
 ```
 
