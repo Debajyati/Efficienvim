@@ -711,7 +711,7 @@ require("lazy").setup({
       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end
   },
-    -- lazy.nvim
+    -- ui for messages, commandline & the popupmenu
   {
     "folke/noice.nvim",
     event = "VeryLazy",
