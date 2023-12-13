@@ -6,7 +6,7 @@ After installation, you should remove the `.git` folder so that you can add your
 ## 👀 Requirements
 
 - Make sure you know some basic vim commands.
-- [Nerd Fonts](https://www.nerdfonts.com/font-downloads) (_Optional with manual intervention:_ See [Documentation on customizing icons](https://docs.astronvim.com/Recipes/icons))
+- [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 - [Neovim 0.9+ (_Not_ including nightly)](https://github.com/neovim/neovim/releases/tag/stable)
 - A clipboard tool is necessary for the integration with the system clipboard (see [`:help clipboard-tool`](https://neovim.io/doc/user/provider.html#clipboard-tool) for supported solutions)
 - Terminal with true color support (for the default theme, otherwise it is dependent on the theme you are using)
