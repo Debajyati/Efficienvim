@@ -7,7 +7,7 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-  -- use lazy to install lazy, just an experiment
+  -- using lazy to install lazy, started as an experiment, became the main reason behind its stability & existence
   {
     "folke/lazy.nvim",
     lazy = false,
