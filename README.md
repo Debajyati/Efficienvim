@@ -101,7 +101,7 @@ Run `:h Mason` for more info.
 
 ### Credits ✨
 
-Kudos to the entire neovim community out there, all the plugin authors & the following repositories that helped me know, how to develop this starter configuration.
+Kudos to the entire neovim community out there, all the plugin authors & the following repositories that made me know, how to develop this starter configuration.
 - [Lazy.nvim](https://github.com/folke/lazy.nvim)
 - [NVChad](https://github.com/NvChad/NvChad)
 - [AstroNvim](https://github.com/AstroNvim/AstroNvim)
