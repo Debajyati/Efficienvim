@@ -700,6 +700,7 @@ require("lazy").setup({
       vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     end
   },
+      -- AI code completion with Codeium
   {
     "Exafunction/codeium.vim",
     event='BufEnter',
