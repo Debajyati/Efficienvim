@@ -320,10 +320,6 @@ require("lazy").setup({
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
         },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
         experimental = {
           ghost_text = true,
         },
@@ -333,10 +329,6 @@ require("lazy").setup({
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = "cmdline" },
-        },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
         },
         formatting = {
           -- fields = { 'abbr' },
