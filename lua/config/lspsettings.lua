@@ -40,6 +40,7 @@ local cmp = require('cmp')
 
 cmp.setup({
   sources = {
+    {name = 'luasnip'},
     {name = 'nvim_lsp'},
   },
   mapping = cmp.mapping.preset.insert({
@@ -51,7 +52,11 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      local luasnip = require("luasnip")
+      if not luasnip then
+        return
+      end
+      luasnip.lsp_expand(args.body)
     end,
   },
 })
