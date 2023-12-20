@@ -71,15 +71,15 @@ If you want debugging support you would need to install [`nvim-dap`](https://git
 
 #### How to Manage Installed plugins?
 
-Run `:Lazy` to open the Lazy.nvim ui(A graphical status window)
+- `:Lazy` - opens the Lazy.nvim ui(A graphical status window)
 
-Run `:Lazy check` to check for plugin updates
+- `:Lazy check` - checks for plugin updates
 
-Run `:Lazy update` to apply any pending plugin updates
+- `:Lazy update` - applies any pending plugin updates
 
-Run `:Lazy clean` to remove any disabled or unused plugins
+- `:Lazy clean` - removes any disabled or unused plugins
 
-Run `:Lazy sync` to update and clean plugins
+- `:Lazy sync` - updates and clean plugins
 
 Run `:h Lazy` for more info.
 
