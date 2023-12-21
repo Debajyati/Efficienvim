@@ -104,19 +104,19 @@ Run `:h Lazy` for more info.
 Run `:h Mason` for more info.
 
 ### File Structure of the Configuration
-
-.
-├── init.lua
-├── lazy-lock.json
-└── lua
-    └── config
-        ├── autocmds.lua
-        ├── keymaps.lua
-        ├── lazy.lua
-        ├── lspsettings.lua
-        ├── noicesettings.lua
-        └── options.lua
-
+```md
+  .
+  ├── init.lua
+  ├── lazy-lock.json
+  └── lua
+      └── config  
+          ├── autocmds.lua        
+          ├── keymaps.lua        
+          ├── lazy.lua        
+          ├── lspsettings.lua
+          ├── noicesettings.lua
+          └── options.lua
+```
 
 ## Credits ✨
 
