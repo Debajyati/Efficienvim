@@ -9,6 +9,7 @@ After installation, you should remove the `.git` folder so that you can add your
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 - [Neovim 0.9+ (_Not_ including nightly)](https://github.com/neovim/neovim/releases/tag/stable)
 - A clipboard tool is necessary for the integration with the system clipboard (see [`:help clipboard-tool`](https://neovim.io/doc/user/provider.html#clipboard-tool) for supported solutions)
+  - `xclip` is recommended for WSL users. 
 - Terminal with true color support (for the default theme, otherwise it is dependent on the theme you are using)
 - Optional Requirements:
   - [ripgrep](https://github.com/BurntSushi/ripgrep) - live grep telescope search (`<leader>ps`)
