@@ -73,7 +73,7 @@ Example: `:TSInstall c` for c language
 Efficienvim won't come with DAP(Debug Adapter Protocol). 
 If you want debugging support you would need to install [`nvim-dap`](https://github.com/mfussenegger/nvim-dap) & [`nvim-dap-ui`](https://github.com/rcarriga/nvim-dap-ui) first with lazy.nvim(the plugin manager Efficienvim uses) or any other plugin that gives debugger support in Neovim.
 
-#### How to Manage Installed plugins?
+### How to Manage Installed plugins?
 
 - `:Lazy` - opens the Lazy.nvim ui(A graphical status window)
 
@@ -87,7 +87,7 @@ If you want debugging support you would need to install [`nvim-dap`](https://git
 
 Run `:h Lazy` for more info.
 
-#### How to Manage Installed LSPs
+### How to Manage Installed LSPs
 
 - `:Mason` - opens a graphical status window
 
@@ -103,7 +103,22 @@ Run `:h Lazy` for more info.
 
 Run `:h Mason` for more info.
 
-### Credits ✨
+### File Structure of the Configuration
+
+.
+├── init.lua
+├── lazy-lock.json
+└── lua
+    └── config
+        ├── autocmds.lua
+        ├── keymaps.lua
+        ├── lazy.lua
+        ├── lspsettings.lua
+        ├── noicesettings.lua
+        └── options.lua
+
+
+## Credits ✨
 
 Kudos to the entire neovim community out there, all the plugin authors & the following repositories that made me know, how to develop this starter configuration.
 - [Lazy.nvim](https://github.com/folke/lazy.nvim)

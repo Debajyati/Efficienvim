@@ -2,6 +2,9 @@
 -- Add any additional options here
 
 vim.opt.background = "dark"
+
+-- If you are using a transparent terminal and want Neovim to be transparent also,
+-- then Uncomment the 2 lines below.
 -- vim.api.nvim_set_hl(0, "Normal", { bg="none"})
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg="none" })
 
@@ -20,7 +23,6 @@ vim.opt.swapfile = false
 vim.opt.wrap = false
 
 vim.opt.undofile = true
--- vim.opt.undodir = 
 
 
 vim.opt.hlsearch = false
