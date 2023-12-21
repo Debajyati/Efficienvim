@@ -13,6 +13,9 @@ After installation, you should remove the `.git` folder so that you can add your
 - Optional Requirements:
   - [ripgrep](https://github.com/BurntSushi/ripgrep) - live grep telescope search (`<leader>ps`)
   - [lazygit](https://github.com/jesseduffield/lazygit) - lazygit ui toggle inside NeoVim (`:LazyGit`)
+### Note
+The leader key is set as `<space>` key in the keymaps file which loads and should always load after all the plugins are loaded. 
+So make sure you don't set any keybinding involving the `<leader>` key in `lazy.lua`(which loads all the plugins).
 
 ## 🛠️ Installation
 Efficienvim currently supports better on MacOS, Linux & WSL
