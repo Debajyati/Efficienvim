@@ -59,7 +59,7 @@ Always run `:checkhealth` after any configuration changes to diagnose any proble
 Enter `:LspInstall` or `:MasonInstall` followed by the name of the server you want to install<br>
 Example: `:LspInstall clangd` or `:MasonInstall clangd` for C/C++
 
-#### Install Treesitter(language parser in simple words)
+#### Install Treesitter(language parser in simple words, which enables better syntax highlighting)
 
 Enter `:TSInstall` followed by the name of the language you want to install<br>
 Example: `:TSInstall c` for c language
