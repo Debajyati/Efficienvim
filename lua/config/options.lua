@@ -9,7 +9,6 @@ vim.opt.background = "dark"
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg="none" })
 
 
-vim.opt.guicursor = ""
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2

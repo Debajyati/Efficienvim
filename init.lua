@@ -4,9 +4,9 @@ vim.g.loaded_netrwPlugin = 1
 
 
 -- bootstrap lazy.nvim, and your plugins
+require("config.options")
 require("config.lazy")
 require("config.keymaps")
-require("config.options")
 require("config.lspsettings")
 require("config.autocmds")
 require("config.noicesettings")
