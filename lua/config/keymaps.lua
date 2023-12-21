@@ -21,14 +21,6 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "fugitive" })
 -- undotree keymaps
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undotree" })
 
--- vim-test keymaps
-vim.keymap.set("n", "<leader>tt", vim.cmd.TestLast, { desc = "run last test" })
-vim.keymap.set("n", "<leader>ttf", vim.cmd.TestFile, { desc = "run file test" })
-vim.keymap.set("n", "<leader>tn", vim.cmd.TestNearest, { desc = "run nearest test" })
-
--- vim-maximizer keymaps
-vim.keymap.set("n", "<leader>sm", vim.cmd.MaximizerToggle, { desc = "toggle maximizer" })
-
 -- vim-tmux-navigator keymaps
 vim.keymap.set("n", "<C-h>", vim.cmd.TmuxNavigateLeft, { desc = "navigate left" })
 vim.keymap.set("n", "<C-j>", vim.cmd.TmuxNavigateDown, { desc = "navigate down" })
