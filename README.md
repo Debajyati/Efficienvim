@@ -103,7 +103,7 @@ Run `:h Lazy` for more info.
 
 Run `:h Mason` for more info.
 
-### File Structure of the Configuration
+### Tree Structure of the Configuration Files
 ```md
   .
   ├── init.lua
