@@ -14,6 +14,7 @@ After installation, you should remove the `.git` folder so that you can add your
 - Optional Requirements:
   - [ripgrep](https://github.com/BurntSushi/ripgrep) - live grep telescope search (`<leader>ps`)
   - [lazygit](https://github.com/jesseduffield/lazygit) - lazygit ui toggle inside NeoVim (`:LazyGit`)
+  - [GitHub-CLI](https://github.com/pwntester/octo.nvim) - octo.nvim ui toggle inside NeoVim(`<leader>o`)
 ### Note
 The leader key is set as `<space>` key in the `keymaps.lua` file which loads and should always load after all the plugins are loaded. 
 So make sure when customising the configuration further, you don't set any keybinding involving the `<leader>` key in `lazy.lua`(which loads all the plugins).
