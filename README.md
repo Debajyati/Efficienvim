@@ -27,7 +27,7 @@ So make sure when customising the configuration further, you don't set any keybi
       It has a beautiful **dashboard** which opens at startup. 
 
 ## 🛠️ Installation
-Efficienvim supports on MacOS, Linux & WSL
+Efficienvim is supported better on MacOS, Linux & WSL.
 If you use Windows then installing in WSL is Recommended.
 
 ### Linux/Mac OS/WSL (Unix)
