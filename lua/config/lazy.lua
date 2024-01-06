@@ -837,6 +837,11 @@ require("lazy").setup({
 --[[   -- replace strings in selected files using regex in your project directory
   { "nvim-pack/nvim-spectre", event = "VeryLazy"}, ]]
 
+  {
+    'mg979/vim-visual-multi',
+    branch='master',
+    event="VeryLazy",
+  },
 
 })
 
