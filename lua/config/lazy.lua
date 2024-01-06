@@ -7,16 +7,13 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-  -- using lazy to install lazy, started as an experiment, became the main reason behind its stability & existence
+  -- use lazy to install lazy, just an experiment
   {
     "folke/lazy.nvim",
     lazy = false,
   },
 
-  {
-    "ntk148v/habamax.nvim",
-    dependencies={ "rktjmp/lush.nvim" },
-  },
+  { "EdenEast/nightfox.nvim", priority=1000},
 
   {
     -- plugins/telescope.lua:
@@ -105,8 +102,8 @@ require("lazy").setup({
             function(server_name)
               if server_name ~= "jdtls" then
                 --local opts = {
-                --	on_attach = require("plugins.lsp.handlers").on_attach,
-                --	capabilities = require("plugins.lsp.handlers").capabilities,
+                --  on_attach = require("plugins.lsp.handlers").on_attach,
+                --  capabilities = require("plugins.lsp.handlers").capabilities,
                 --}
 
                 local require_ok, server = pcall(require, "plugins.lsp.settings." .. server_name)
@@ -131,7 +128,7 @@ require("lazy").setup({
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "css", "python", "javascript", "html" },
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
         sync_install = false,
         auto_install = true,
         highlight = { enable = true, additional_vim_regex_highlighting = false, },
@@ -165,7 +162,7 @@ require("lazy").setup({
           ---Line-comment keymap
           line = '<leader>/',
           ---Block-comment keymap
-          block = 'gb',
+          block = '<leader>tb',
         },
         ---LHS of extra mappings
         extra = {
@@ -276,7 +273,7 @@ require("lazy").setup({
           -- Accept currently selected item. If none selected, `select` first item.
           -- Set `select` to `false` to only confirm explicitly selected items.
           ["<CR>"] = cmp.mapping.confirm { select = false },
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
+          ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expandable() then
@@ -320,7 +317,7 @@ require("lazy").setup({
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
         },
-        experimental = {
+       experimental = {
           ghost_text = true,
         },
       }
@@ -330,7 +327,7 @@ require("lazy").setup({
         sources = {
           { name = "cmdline" },
         },
-        formatting = {
+       formatting = {
           -- fields = { 'abbr' },
           format = function(_, vim_item)
             vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
@@ -373,11 +370,13 @@ require("lazy").setup({
     end
 
   },
-
-  {"mbbill/undotree", event="VeryLazy"},
+  -- to undo any changes
+  {"mbbill/undotree"},
 
   {"nvim-tree/nvim-web-devicons", lazy=true},
-  {"tpope/vim-fugitive", event="VeryLazy"},
+  -- This is only git plugin a user can need.
+  -- Although I provided more below after.
+  {"tpope/vim-fugitive"},
 
   {
     'akinsho/bufferline.nvim',
@@ -471,7 +470,6 @@ require("lazy").setup({
 
   {
     "akinsho/toggleterm.nvim",
-    event="VeryLazy",
     config = function()
       local execs = {
         { nil, "<space>th", "Horizontal Terminal", "horizontal", 0.3 },
@@ -562,10 +560,42 @@ require("lazy").setup({
       end
     end
   },
+  -- top-notch colorschemes
+  {"rebelot/kanagawa.nvim"},
+  
+  {
+    "ntk148v/habamax.nvim",
+    dependencies={ "rktjmp/lush.nvim" },
+  }
 
-  {"lunarvim/darkplus.nvim", event="VeryLazy"},
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000, lazy=true },
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+  },
 
+  {
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+  },
+  {"lunarvim/darkplus.nvim"},
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
+  -- to enable AI code completion
+  {
+    "Exafunction/codeium.vim",
+    event='BufEnter',
+    config = function ()
+      -- Changed '<C-g>' here to '<C-y>' to make it work.
+      vim.keymap.set('i', '<C-y>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+    end
+  },
+    -- lazygit ui inside Neovim
   {
     "kdheepak/lazygit.nvim",
     -- optional for floating window border decoration
@@ -605,6 +635,13 @@ require("lazy").setup({
       { "<leader>o", "<cmd>Octo<cr>", desc = "Octo" },
     },
   },
+
+  {
+    "sindrets/diffview.nvim",
+    event = "VeryLazy",
+    cmd = { "DiffviewOpen","DiffviewClose","DiffviewFocusFiles","DiffviewToggleFiles","DiffviewRefresh" },
+  },
+
   -- a plugin, when triggered will show your beloved keybindings,
   -- so that you won't need to memorise them.
   -- needs to be configured properly to show what the keymaps do,
@@ -622,61 +659,6 @@ require("lazy").setup({
       -- which-key based on your own and default plugins keybindings
       -- or leave it empty to use the default settings
     },
-  },
-
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-      {
-        's1n7ax/nvim-window-picker',
-        version = '2.*',
-        config = function()
-            require 'window-picker'.setup({
-                filter_rules = {
-                    include_current_win = false,
-                    autoselect_one = true,
-                    -- filter using buffer options
-                    bo = {
-                        -- if the file type is one of following, the window will be ignored
-                        filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-                        -- if the buffer type is one of following, the window will be ignored
-                        buftype = { 'terminal', "quickfix" },
-                    },
-            },
-        })
-        end,
-      },
-    },
-    config = function ()
-      -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-      vim.fn.sign_define("DiagnosticSignError",
-        {text = " ", texthl = "DiagnosticSignError"})
-      vim.fn.sign_define("DiagnosticSignWarn",
-        {text = " ", texthl = "DiagnosticSignWarn"})
-      vim.fn.sign_define("DiagnosticSignInfo",
-        {text = " ", texthl = "DiagnosticSignInfo"})
-      vim.fn.sign_define("DiagnosticSignHint",
-        {text = "󰌵", texthl = "DiagnosticSignHint"})
-
-      vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
-    end
-  },
-      -- AI code completion with Codeium
-  {
-    "Exafunction/codeium.vim",
-    event='BufEnter',
-    config = function ()
-      -- Changed '<C-g>' here to '<C-y>' to make it work.
-      vim.keymap.set('i', '<C-y>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-    end
   },
     -- ui for messages, commandline & the popupmenu
   {
@@ -700,9 +682,161 @@ require("lazy").setup({
       },
     },
   },
+  -- Beautiful dashboard
+  {
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    opts = function()
+      local logo = [[
+       ________ ________ ________ ______  ______  ______ ________ __    __ __     __ ______ __       __ 
+      |        \        \        \      \/      \|      \        \  \  |  \  \   |  \      \  \     /  \
+      | ▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓\▓▓▓▓▓▓  ▓▓▓▓▓▓\\▓▓▓▓▓▓ ▓▓▓▓▓▓▓▓ ▓▓\ | ▓▓ ▓▓   | ▓▓\▓▓▓▓▓▓ ▓▓\   /  ▓▓
+      | ▓▓__   | ▓▓__   | ▓▓__     | ▓▓ | ▓▓   \▓▓ | ▓▓ | ▓▓__   | ▓▓▓\| ▓▓ ▓▓   | ▓▓ | ▓▓ | ▓▓▓\ /  ▓▓▓
+      | ▓▓  \  | ▓▓  \  | ▓▓  \    | ▓▓ | ▓▓       | ▓▓ | ▓▓  \  | ▓▓▓▓\ ▓▓\▓▓\ /  ▓▓ | ▓▓ | ▓▓▓▓\  ▓▓▓▓
+      | ▓▓▓▓▓  | ▓▓▓▓▓  | ▓▓▓▓▓    | ▓▓ | ▓▓   __  | ▓▓ | ▓▓▓▓▓  | ▓▓\▓▓ ▓▓ \▓▓\  ▓▓  | ▓▓ | ▓▓\▓▓ ▓▓ ▓▓
+      | ▓▓_____| ▓▓     | ▓▓      _| ▓▓_| ▓▓__/  \_| ▓▓_| ▓▓_____| ▓▓ \▓▓▓▓  \▓▓ ▓▓  _| ▓▓_| ▓▓ \▓▓▓| ▓▓
+      | ▓▓     \ ▓▓     | ▓▓     |   ▓▓ \\▓▓    ▓▓   ▓▓ \ ▓▓     \ ▓▓  \▓▓▓   \▓▓▓  |   ▓▓ \ ▓▓  \▓ | ▓▓
+       \▓▓▓▓▓▓▓▓\▓▓      \▓▓      \▓▓▓▓▓▓ \▓▓▓▓▓▓ \▓▓▓▓▓▓\▓▓▓▓▓▓▓▓\▓▓   \▓▓    \▓    \▓▓▓▓▓▓\▓▓      \▓▓
 
+
+      ]]
+
+      logo = string.rep("\n", 8) .. logo .. "\n\n"
+
+      local opts = {
+        theme = "doom",
+        hide = {
+          -- this is taken care of by lualine
+          -- enabling this messes up the actual laststatus setting after loading a file
+          statusline = false,
+        },
+        config = {
+          header = vim.split(logo, "\n"),
+          -- stylua: ignore
+          center = {
+            { action = "Telescope find_files",                                     desc = " Find file",       icon = " ", key = "<space>ff" },
+            { action = "ene | startinsert",                                        desc = " New file",        icon = " ", key = "<space>n" },
+            { action = "Telescope oldfiles",                                       desc = " Recent files",    icon = " ", key = "<space>r" },
+            { action = "Telescope live_grep",                                      desc = " Find text",       icon = " ", key = "<space>ps" },
+            { action = "Lazy",                                                     desc = " Lazy",            icon = "󰒲 ", key = "l" },
+            { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
+          },
+          footer = function()
+            local stats = require("lazy").stats()
+            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+          end,
+        },
+      }
+
+      for _, button in ipairs(opts.config.center) do
+        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+        button.key_format = "  %s"
+      end
+
+      -- close Lazy and re-open when the dashboard is ready
+      if vim.o.filetype == "lazy" then
+        vim.cmd.close()
+        vim.api.nvim_create_autocmd("User", {
+          pattern = "DashboardLoaded",
+          callback = function()
+            require("lazy").show()
+          end,
+        })
+      end
+
+      return opts
+    end,
+  },
+
+  -- plugin to change surroundings of text/code 
+  {
+    "kylechui/nvim-surround",
+    version='*',
+    event = "VeryLazy",
+    opts={},
+    config = function()
+      require("nvim-surround").setup({})
+    end
+  },
+  -- for splitting/joining blocks of code
+  {
+    'Wansmer/treesj',
+    event = "VeryLazy",
+    keys = { '<space>m', '<space>j', '<space>s' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesj').setup({--[[ your config ]]})
+    end,
+  },
+  -- file-explorer which makes edit file-system like a buffer
+  {
+    "stevearc/oil.nvim",
+    lazy = false,
+    opts = {},
+    enabled = true,
+    cmd = "Oil",
+    keys = {
+      { "<space>O", function() require("oil").open() end, desc = "Open folder in Oil" },
+    },
+  },
+  -- automatic code execution other related works
+  {
+    "google/executor.nvim",
+    event="VeryLazy",
+    dependencies = "MunifTanjim/nui.nvim",
+    opts = {},
+    cmd = {
+      "ExecutorRun",
+      "ExecutorSetCommand",
+      "ExecutorShowDetail",
+      "ExecutorHideDetail",
+      "ExecutorToggleDetail",
+      "ExecutorSwapToSplit",
+      "ExecutorSwapToPopup",
+      "ExecutorToggleDetail",
+      "ExecutorReset",
+    },
+  },
+  -- Better help with code diagnostics
+  {
+    "folke/trouble.nvim",
+    event="VeryLazy",
+    cmd = { "TroubleToggle", "Trouble" },
+
+    opts = {
+      use_diagnostic_signs = true,
+      action_keys = {
+        close = { "q", "<esc>" },
+        cancel = "<c-e>",
+      },
+    },
+  },
+  {
+    "folke/edgy.nvim",
+    event="VeryLazy",
+    optional = true,
+    opts = function(_, opts)
+      if not opts.bottom then opts.bottom = {} end
+      table.insert(opts.bottom, "Trouble")
+    end,
+  },
+  -- provides an explanation for regular expressions 
+  {
+    "tomiis4/Hypersonic.nvim",
+    event = "CmdlineEnter",
+    cmd = "Hypersonic",
+    opts = {},
+  },
+
+  -- Color picker and highlighter plugin for Neovim
+  {
+    "uga-rosa/ccc.nvim",
+    event = "VeryLazy",
+  },
+--[[   -- replace strings in selected files using regex in your project directory
+  { "nvim-pack/nvim-spectre", event = "VeryLazy"}, ]]
 
 
 })
-
 

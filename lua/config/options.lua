@@ -42,3 +42,6 @@ vim.cmd("filetype plugin indent on")
 -- vim.opt.clipboard:append("unnamedplus")
 -- vim.api.nvim_set_keymap("v", "<C-c>", ":w !xclip -i -sel c<CR><CR>", { noremap = true })
 
+
+vim.cmd("set number")
+vim.cmd("set cursorline")
