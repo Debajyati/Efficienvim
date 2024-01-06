@@ -16,11 +16,18 @@ After installation, you should remove the `.git` folder so that you can add your
   - [lazygit](https://github.com/jesseduffield/lazygit) - lazygit ui toggle inside NeoVim (`:LazyGit`)
   - [GitHub-CLI](https://github.com/cli/cli) - octo.nvim ui toggle inside NeoVim(`<leader>o`)
 ### Note
-The leader key is set as `<space>` key in the `keymaps.lua` file which loads and should always load after all the plugins are loaded. 
+- The leader key is set as `<space>` key in the `keymaps.lua` file which loads and should always load after all the plugins are loaded. 
 So make sure when customising the configuration further, you don't set any keybinding involving the `<leader>` key in `lazy.lua`(which loads all the plugins).
+- Efficienvim has two versions. 
+    - The `main` branch is the **default** one that's the *ordinary*(user-friendlier) version.
+      It uses `Neotree` plugin as its file-explorer(which is auto-opened at the left-side of the Neovim window at startup) instead of the `Netrw` file-exlorer that comes with Neovim. 
+      It doesn't have any **dashboard**.
+    - The `enhanced` branch is the more **advanced** (with more plugins as *enhanced* features) version.
+      It uses `Oil.nvim` plugin as its file-explorer(you will be able to edit the file system like a regular buffer).
+      It has a beautiful **dashboard** which opens at startup. 
 
 ## 🛠️ Installation
-Efficienvim currently supports better on MacOS, Linux & WSL
+Efficienvim supports on MacOS, Linux & WSL
 If you use Windows then installing in WSL is Recommended.
 
 ### Linux/Mac OS/WSL (Unix)
@@ -33,9 +40,20 @@ mv ~/.local/share/nvim ~/.local/share/nvim.bak
 ```
 
 #### Clone the repository
-
+##### Complete Installation(Both branches, both versions)
 ```bash
 git clone https://github.com/Debajyati/Efficienvim ~/.config/nvim
+nvim
+```
+
+##### Seperate Installation(Installing a specific version/branch)
+```bash
+git clone -b main --single-branch https://github.com/Debajyati/Efficienvim ~/.config/nvim # Installing the only the ordinary version (branchname - 'main')
+nvim
+```
+Or,
+```bash
+git clone -b enhanced --single-branch https://github.com/Debajyati/Efficienvim ~/.config/nvim # Installing the only the enhanced version (branchname - 'enhanced')
 nvim
 ```
 
@@ -43,17 +61,28 @@ nvim
 
 #### Make a backup of your current nvim and nvim-data folder
 
-```pwsh
+```sh
 Rename-Item -Path $env:LOCALAPPDATA\nvim -NewName $env:LOCALAPPDATA\nvim.bak
 Rename-Item -Path $env:LOCALAPPDATA\nvim-data -NewName $env:LOCALAPPDATA\nvim-data.bak
 ```
 
 #### Clone the repository
-
-```pwsh
+##### Complete Installation(Both branches, both versions)
+```sh
 git clone https://github.com/Debajyati/Efficienvim $env:LOCALAPPDATA\nvim
 nvim
 ```
+##### Seperate Installation(Installing a specific version/branch)
+```sh
+git clone -b main --single-branch https://github.com/Debajyati/Efficienvim $env:LOCALAPPDATA\nvim # Installing the only the ordinary version (branchname - 'main')
+nvim
+```
+Or,
+```sh
+git clone -b enhanced --single-branch https://github.com/Debajyati/Efficienvim $env:LOCALAPPDATA\nvim # Installing the only the enhanced version (branchname - 'enhanced')
+nvim
+```
+
 ### Tip
 Always run `:checkhealth` after any configuration changes to diagnose any problem with the configuration (if any) so that necessary steps can be taken. 
 
