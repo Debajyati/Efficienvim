@@ -13,8 +13,6 @@ require("lazy").setup({
     lazy = false,
   },
 
-  { "EdenEast/nightfox.nvim", priority=1000},
-
   {
     -- plugins/telescope.lua:
     'nvim-telescope/telescope.nvim', tag = '0.1.4',
@@ -563,10 +561,7 @@ require("lazy").setup({
   -- top-notch colorschemes
   {"rebelot/kanagawa.nvim"},
   
-  {
-    "ntk148v/habamax.nvim",
-    dependencies={ "rktjmp/lush.nvim" },
-  }
+  { "EdenEast/nightfox.nvim", lazy=false},
 
   {
     'AlexvZyl/nordic.nvim',
