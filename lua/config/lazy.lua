@@ -586,24 +586,6 @@ require("lazy").setup({
       'nvim-tree/nvim-web-devicons',     -- optional
     },
   },
-  -- for great github integration in neovim
-
-  {
-    "pwntester/octo.nvim",
-    event = "VeryLazy",
-    cmd = "Octo",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("octo").setup()
-    end,
-    keys = {
-      { "<leader>o", "<cmd>Octo<cr>", desc = "Octo" },
-    },
-  },
   -- a plugin, when triggered will show your beloved keybindings,
   -- so that you won't need to memorise them.
   -- needs to be configured properly to show what the keymaps do,
