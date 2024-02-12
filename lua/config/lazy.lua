@@ -586,7 +586,7 @@ require("lazy").setup({
       'nvim-tree/nvim-web-devicons',     -- optional
     },
   },
-  -- for great git & github integration in neovim
+  -- for great github integration in neovim
 
   {
     "pwntester/octo.nvim",
@@ -598,8 +598,7 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("octo").setup({ enable_builtin = true })
-      vim.cmd([[hi OctoEditable guibg=none]])
+      require("octo").setup()
     end,
     keys = {
       { "<leader>o", "<cmd>Octo<cr>", desc = "Octo" },
