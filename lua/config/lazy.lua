@@ -814,6 +814,8 @@ require("lazy").setup({
 --[[   -- replace strings in selected files using regex in your project directory
   { "nvim-pack/nvim-spectre", event = "VeryLazy"}, ]]
 
+-- multicursor support with Vim-Visual-Multi
+  -- when in NORMAL Mode, click <Esc> to exit Vim-Visual-Multi
   {
     'mg979/vim-visual-multi',
     branch='master',
@@ -822,3 +824,5 @@ require("lazy").setup({
 
 })
 
+-- enabling Ctrl+leftmouse to create a cursor at each & every clicked position in NORMAL Mode
+vim.cmd("nmap <C-LeftMouse> <Plug>(VM-Mouse-Cursor)")
