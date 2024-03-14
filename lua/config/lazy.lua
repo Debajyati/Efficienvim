@@ -578,7 +578,7 @@ require("lazy").setup({
   {"lunarvim/darkplus.nvim"},
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
-  -- to enable AI code completion
+--[[   -- to enable AI code completion
   {
     "Exafunction/codeium.vim",
     event='BufEnter',
@@ -589,7 +589,7 @@ require("lazy").setup({
       vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end
-  },
+  }, ]]
     -- lazygit ui inside Neovim
   {
     "kdheepak/lazygit.nvim",

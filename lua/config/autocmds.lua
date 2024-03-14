@@ -1,4 +1,4 @@
 -- setting colorscheme as default 
-vim.cmd [[colorscheme nordfox]]
+vim.cmd [[colorscheme duskfox]]
 
 -- Add any custom autocommand here below
