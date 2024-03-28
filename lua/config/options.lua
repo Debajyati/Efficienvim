@@ -3,12 +3,6 @@
 
 vim.opt.background = "dark"
 
--- If you are using a transparent terminal and want Neovim to be transparent also,
--- then Uncomment the 2 lines below.
--- vim.api.nvim_set_hl(0, "Normal", { bg="none"})
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg="none" })
-
-
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2

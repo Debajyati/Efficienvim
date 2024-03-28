@@ -754,7 +754,7 @@ require("lazy").setup({
     enabled = true,
     cmd = "Oil",
     keys = {
-      { "<space>O", function() require("oil").open() end, desc = "Open folder in Oil" },
+      { "<space>o", function() require("oil").open() end, desc = "Open folder in Oil" },
     },
   },
   -- automatic code execution other related works
