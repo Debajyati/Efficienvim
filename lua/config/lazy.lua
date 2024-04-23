@@ -560,7 +560,7 @@ require("lazy").setup({
   },
   -- top-notch colorschemes
   {"rebelot/kanagawa.nvim"},
-  
+
   { "EdenEast/nightfox.nvim", lazy=false},
 
   {
@@ -611,7 +611,25 @@ require("lazy").setup({
       'nvim-tree/nvim-web-devicons',     -- optional
     },
   },
-  -- for great git integration in neovim
+  -- for great git & github integration in neovim
+
+  {
+    "pwntester/octo.nvim",
+    event = "VeryLazy",
+    cmd = "Octo",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("octo").setup({ enable_builtin = true })
+      vim.cmd([[hi OctoEditable guibg=none]])
+    end,
+    keys = {
+      { "<leader>O", "<cmd>Octo<cr>", desc = "Octo" },
+    },
+  },
 
   {
     "sindrets/diffview.nvim",
@@ -820,6 +838,26 @@ require("lazy").setup({
     'mg979/vim-visual-multi',
     branch='master',
     event="VeryLazy",
+  },
+-- for formatting and linting
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvimtools/none-ls-extras.nvim"
+    },
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          -- null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.black,
+          require("none-ls.diagnostics.eslint_d"),
+        },
+      })
+
+      vim.keymap.set("n", "<space>fr", vim.lsp.buf.format, { desc = "format document" })
+    end,
   },
 
 })
