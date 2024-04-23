@@ -767,7 +767,7 @@ require("lazy").setup({
 
 -- NOTE : You can enable only one file explorer at a time.
   -- By default neo-tree is not installed, and oil.nvim is the default file-explorer
-  -- in `EFFICIENVIM`, to change switch explorers, comment out one and uncomment another.
+  -- in `EFFICIENVIM`, to change/switch explorers, comment out one and uncomment another.
   -- Below is the Neo-tree config commented out.
 
 -- neo-tree : A file explorer sidebar with tree view.
