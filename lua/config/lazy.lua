@@ -838,7 +838,12 @@ require("lazy").setup({
     'mg979/vim-visual-multi',
     branch='master',
     event="VeryLazy",
+    config = function ()
+      -- enabling Ctrl+leftmouse to create a cursor at each & every clicked position in NORMAL Mode
+      vim.keymap.set('n', "<C-LeftMouse>", "<Plug>(VM-Mouse-Cursor)", { desc="vscode style multicursor mode" })
+    end
   },
+
 -- for formatting and linting
   {
     "nvimtools/none-ls.nvim",
@@ -862,5 +867,3 @@ require("lazy").setup({
 
 })
 
--- enabling Ctrl+leftmouse to create a cursor at each & every clicked position in NORMAL Mode
-vim.cmd("nmap <C-LeftMouse> <Plug>(VM-Mouse-Cursor)")
