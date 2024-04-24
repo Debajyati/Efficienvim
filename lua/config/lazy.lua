@@ -713,6 +713,8 @@ require("lazy").setup({
             { action = "ene | startinsert",                                        desc = " New file",        icon = " ", key = "<space>n" },
             { action = "Telescope oldfiles",                                       desc = " Recent files",    icon = " ", key = "<space>r" },
             { action = "Telescope live_grep",                                      desc = " Find text",       icon = " ", key = "<space>ps" },
+            { action = "e ~/.config/nvim/init.lua",                                desc = " Config",          icon = " ", key = "c" },
+            { action = "Telescope colorscheme",                                    desc = "  Themes",         icon = "",  key = "<space>cc"},
             { action = "Lazy",                                                     desc = " Lazy",            icon = "󰒲 ", key = "l" },
             { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
           },
