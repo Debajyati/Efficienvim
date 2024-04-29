@@ -18,11 +18,42 @@ require("lazy").setup({
     'nvim-telescope/telescope.nvim', tag = '0.1.4',
     -- or                              , branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+    }
   },
 
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
+  },
+  -- visible indentation
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "InsertEnter",
+    opts = {
+      indent = {
+        char = "│",
+        tab_char = "│",
+      },
+      scope = { enabled = false },
+      exclude = {
+        filetypes = {
+          "help",
+          "alpha",
+          "dashboard",
+          "neo-tree",
+          "Trouble",
+          "trouble",
+          "lazy",
+          "mason",
+          "notify",
+          "toggleterm",
+          "lazyterm",
+        },
+      },
+    },
+    main = "ibl",
   },
 
   {
@@ -88,9 +119,9 @@ require("lazy").setup({
               check_outdated_packages_on_open = false,
               border = "single",
               icons = {
-                package_installed = "✓",
+                package_installed = "",
                 package_pending = "",
-                package_uninstalled = "➜",
+                package_uninstalled = "󰚌",
               },
             },
           })
@@ -213,40 +244,47 @@ require("lazy").setup({
 -- require("luasnip.loaders.from_vscode").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets/vscode" }
 
       local kind_icons = {
-        Text = "",
-        Method = "",
-        Function = "",
+        Namespace = "󰌗",
+        Text = "󰉿",
+        Method = "󰆧",
+        Function = "󰆧",
         Constructor = "",
-        Field = "ﰠ",
-        Variable = "",
-        Class = "ﴯ",
+        Field = "󰜢",
+        Private = "",
+        Variable = "󰀫",
+        Class = "󰠱",
         Interface = "",
-        Module = "",
-        Property = "ﰠ",
-        Unit = "塞",
-        Value = "",
+        Module = "",
+        Property = "󰜢",
+        Unit = "󰑭",
+        Value = "󰎠",
         Enum = "",
-        Keyword = "",
+        Keyword = "󰌋",
         Snippet = "",
-        Color = "",
-        File = "",
-        Reference = "",
-        Folder = "",
+        Color = "󰏘",
+        File = "󰈚",
+        Reference = "󰈇",
+        Folder = "󰉋",
         EnumMember = "",
-        Constant = "",
-        Struct = "פּ",
+        Constant = "󰏿",
+        Struct = "󰙅",
         Event = "",
-        Operator = "",
-        TypeParameter = "",
-        Namespace = " ",
+        Operator = "󰆕",
+        TypeParameter = "󰊄",
+        Table = "",
+        Object = "󰅩",
+        Tag = "",
+        Array = "[]",
+        Boolean = "",
+        Number = "",
+        Null = "󰟢",
+        String = "󰉿",
+        Calendar = "",
+        Watch = "󰥔",
         Package = " ",
-        String = " ",
-        Number = " ",
-        Boolean = " ",
-        Array = " ",
-        Object = " ",
-        Key = " ",
-        Null = " ",
+        Copilot = "",
+        Codeium = "",
+        TabNine = "",
       }
 
       cmp.setup {
@@ -372,10 +410,6 @@ require("lazy").setup({
   {"mbbill/undotree"},
 
   {"nvim-tree/nvim-web-devicons", lazy=true},
-  -- This is only git plugin a user can need.
-  -- Although I provided more below after.
-  {"tpope/vim-fugitive"},
-
   {
     'akinsho/bufferline.nvim',
     -- enabled = false,
@@ -402,7 +436,6 @@ require("lazy").setup({
               highlight = "Offset",
             },
           },
-          -- buffer_close_icon = "",
           modified_icon = "●",
           -- close_icon = "",
           -- close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -590,15 +623,6 @@ require("lazy").setup({
       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end
   }, ]]
-    -- lazygit ui inside Neovim
-  {
-    "kdheepak/lazygit.nvim",
-    -- optional for floating window border decoration
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-    },
-    event="VeryLazy",
-  },
   -- for better neovim built-in lsp experience
   {
     'nvimdev/lspsaga.nvim',
@@ -611,30 +635,26 @@ require("lazy").setup({
       'nvim-tree/nvim-web-devicons',     -- optional
     },
   },
-  -- for great git & github integration in neovim
+  -- for great git integration in neovim
 
-  {
-    "pwntester/octo.nvim",
-    event = "VeryLazy",
-    cmd = "Octo",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("octo").setup({ enable_builtin = true })
-      vim.cmd([[hi OctoEditable guibg=none]])
-    end,
-    keys = {
-      { "<leader>O", "<cmd>Octo<cr>", desc = "Octo" },
-    },
-  },
+  -- This is only git plugin a user can need.
+  -- Although I provided more below after.
+  {"tpope/vim-fugitive"},
 
   {
     "sindrets/diffview.nvim",
     event = "VeryLazy",
     cmd = { "DiffviewOpen","DiffviewClose","DiffviewFocusFiles","DiffviewToggleFiles","DiffviewRefresh" },
+  },
+
+    -- lazygit ui inside Neovim
+  {
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+    event="VeryLazy",
   },
 
   -- a plugin, when triggered will show your beloved keybindings,

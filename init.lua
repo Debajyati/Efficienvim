@@ -10,6 +10,7 @@ require("config.keymaps")
 require("config.lspsettings")
 require("config.autocmds")
 require("config.noicesettings")
+require("config.terminal")
 
 -- Uncomment the next line to set the autocompletion of Codeium AI as default
 -- vim.g.codeium_manual = true
