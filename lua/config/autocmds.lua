@@ -1,4 +1,5 @@
 -- setting colorscheme as default 
-vim.cmd [[colorscheme kanagawa]]
+-- vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "eldritch"
 
--- Add any custom autocommand here below
+-- Add any autocommands here below
