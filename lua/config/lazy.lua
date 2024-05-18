@@ -37,6 +37,7 @@ require("lazy").setup({
     -- Visible Indentation
     {
       "lukas-reineke/indent-blankline.nvim",
+      tag = 'v3.5.4',
       event = "InsertEnter",
       opts = {
         indent = {
