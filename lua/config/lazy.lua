@@ -10,7 +10,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   install = {
     -- try to load one of these colorschemes when starting an installation during startup
-    colorscheme = { "desert" },
+    colorscheme = { "gruvchad","habamax","blue" },
   },
   -- ui config
   ui = {
