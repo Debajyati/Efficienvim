@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
     vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
-    vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts) 
+    vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
   end
 })
 
@@ -32,7 +32,6 @@ end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {},
   handlers = {default_setup},
 })
 
@@ -40,8 +39,8 @@ local cmp = require('cmp')
 
 cmp.setup({
   sources = {
-    {name = 'luasnip'},
-    {name = 'nvim_lsp'},
+    { name = 'luasnip' },
+    { name = 'nvim_lsp' },
   },
   mapping = cmp.mapping.preset.insert({
     -- Enter key confirms completion item
@@ -60,3 +59,40 @@ cmp.setup({
     end,
   },
 })
+
+
+lspconfig.lua_ls.setup {
+    capabilities = lsp_capabilities,
+    on_init = function(client)
+      local path = client.workspace_folders[1].name
+      if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+        return
+      end
+      client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+        runtime = {
+          -- Tell the language server which version of Lua you're using
+          -- (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT'
+        },
+        -- Make the server aware of Neovim runtime files
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            vim.env.VIMRUNTIME
+          }
+        }
+      })
+    end,
+    settings = {
+        Lua = {
+            -- make the language server recognize "vim" global
+            diagnostics = {
+                globals = { "vim" },
+            },
+            completion = {
+                callSnippet = "Replace",
+            },
+        },
+    },
+}
+

@@ -7,22 +7,20 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-  -- using lazy to install lazy, started as an experiment, became the main reason behind its stability & existence
+  -- using lazy to install lazy
   {
     "folke/lazy.nvim",
     lazy = false,
   },
 
   {
-    "ntk148v/habamax.nvim",
-    dependencies={ "rktjmp/lush.nvim" },
-  },
-
-  {
-    -- plugins/telescope.lua:
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.6',
     -- or                              , branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+    },
   },
 
   {
@@ -35,28 +33,12 @@ require("lazy").setup({
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     config = function()
-      require("neodev").setup({
-        library = {
-          enabled = true, -- when not enabled, neodev will not change any settings to the LSP server
-          -- these settings will be used for your Neovim config directory
-          runtime = true, -- runtime path
-          types = true,   -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-          plugins = true, -- installed opt or start plugins in packpath
-          -- you can also specify the list of plugins to make available as a workspace library
-          -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
-        },
-        setup_jsonls = true, -- configures jsonls to provide completion for project specific .luarc.json files
-        -- With lspconfig, Neodev will automatically setup your lua-language-server
-        -- If you disable this, then you have to set {before_init=require("neodev.lsp").before_init}
-        -- in your lsp start options
-        lspconfig = false,
-        -- much faster, but needs a recent built of lua-language-server
-        -- needs lua-language-server >= 3.6.0
-        pathStrict = true,
-      })
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      local lspconfig = require("lspconfig")
     end,
     dependencies = {
-      { "folke/neodev.nvim",event="VeryLazy" },
+      { "folke/neodev.nvim", opts = {} },
       -- {
       --   "j-hui/fidget.nvim", -- Useful status updates for LSP
       --   config = function()
@@ -93,21 +75,17 @@ require("lazy").setup({
               check_outdated_packages_on_open = false,
               border = "single",
               icons = {
-                package_installed = "✓",
+                package_installed = "",
                 package_pending = "",
-                package_uninstalled = "➜",
+                package_uninstalled = "󰚌",
               },
             },
           })
 
-
           mason_lspconfig.setup_handlers({
             function(server_name)
               if server_name ~= "jdtls" then
-                --local opts = {
-                --	on_attach = require("plugins.lsp.handlers").on_attach,
-                --	capabilities = require("plugins.lsp.handlers").capabilities,
-                --}
+                local opts = {}
 
                 local require_ok, server = pcall(require, "plugins.lsp.settings." .. server_name)
                 if require_ok then
@@ -123,7 +101,7 @@ require("lazy").setup({
     },
   },
 
-  {{
+  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     lazy = false,
@@ -131,15 +109,13 @@ require("lazy").setup({
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "css", "python", "javascript", "html" },
+        ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "python", "elixir", "javascript", "html", "go", "java", "typescript", "rust" },
         sync_install = false,
         auto_install = true,
-        highlight = { enable = true, additional_vim_regex_highlighting = false, },
+        highlight = { enable = true, additional_vim_regex_highlighting = true, },
         indent = { enable = true },
       })
     end
-  },
-
   },
   {
     "numToStr/Comment.nvim",
@@ -199,15 +175,16 @@ require("lazy").setup({
       "CmdlineEnter"
     },
     dependencies = {
-      "hrsh7th/cmp-buffer", -- Buffer Completions
-      "hrsh7th/cmp-path", -- Path Completions
-      "saadparwaiz1/cmp_luasnip", -- Snippet Completions
-      "hrsh7th/cmp-nvim-lsp", -- LSP Completions
-      "hrsh7th/cmp-nvim-lua", -- Lua Completions
-      "hrsh7th/cmp-cmdline", -- CommandLine Completions
-      "L3MON4D3/LuaSnip", -- Snippet Engine
+      "hrsh7th/cmp-buffer",         -- Buffer Completions
+      "hrsh7th/cmp-path",           -- Path Completions
+      "saadparwaiz1/cmp_luasnip",   -- Snippet Completions
+      "hrsh7th/cmp-nvim-lsp",       -- LSP Completions
+      "hrsh7th/cmp-nvim-lua",       -- Lua Completions
+      "hrsh7th/cmp-cmdline",        -- CommandLine Completions
+      "L3MON4D3/LuaSnip",           -- Snippet Engine
       "rafamadriz/friendly-snippets", -- Bunch of Snippets
-      "windwp/nvim-autopairs", -- autopairs
+      "windwp/nvim-autopairs",      -- autopairs
+      "onsails/lspkind.nvim",       -- vscode like pictograms
     },
     config = function()
       local cmp = require "cmp"
@@ -215,43 +192,51 @@ require("lazy").setup({
 
       require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets/snipmate" }
       require("luasnip.loaders.from_vscode").lazy_load()
--- require("luasnip.loaders.from_vscode").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets/vscode" }
+      -- require("luasnip.loaders.from_vscode").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets/vscode" }
 
       local kind_icons = {
-        Text = "",
-        Method = "",
-        Function = "",
+        Namespace = "󰌗",
+        Text = "󰉿",
+        Method = "󰆧",
+        Function = "󰆧",
         Constructor = "",
-        Field = "ﰠ",
-        Variable = "",
-        Class = "ﴯ",
+        Field = "󰜢",
+        Private = "",
+        Variable = "󰀫",
+        Class = "󰠱",
         Interface = "",
-        Module = "",
-        Property = "ﰠ",
-        Unit = "塞",
-        Value = "",
+        Module = "",
+        Property = "󰜢",
+        Unit = "󰑭",
+        Value = "󰎠",
         Enum = "",
-        Keyword = "",
+        Keyword = "󰌋",
         Snippet = "",
-        Color = "",
-        File = "",
-        Reference = "",
-        Folder = "",
+        Color = "󰏘",
+        File = "󰈚",
+        Reference = "󰈇",
+        Folder = "󰉋",
         EnumMember = "",
-        Constant = "",
-        Struct = "פּ",
+        Constant = "󰏿",
+        Struct = "󰙅",
         Event = "",
-        Operator = "",
-        TypeParameter = "",
-        Namespace = " ",
+        Operator = "󰆕",
+        TypeParameter = "󰊄",
+        Table = "",
+        Object = "󰅩",
+        Tag = "",
+        Array = "[]",
+        Boolean = "",
+        Number = "",
+        Null = "󰟢",
+        String = "󰉿",
+        Calendar = "",
+        Watch = "󰥔",
         Package = " ",
-        String = " ",
-        Number = " ",
-        Boolean = " ",
-        Array = " ",
-        Object = " ",
-        Key = " ",
-        Null = " ",
+        Copilot = "",
+        Codeium = "",
+        TabNine = "",
+        Supermaven = "",
       }
 
       cmp.setup {
@@ -264,7 +249,7 @@ require("lazy").setup({
         mapping = cmp.mapping.preset.insert {
           ["<C-k>"] = cmp.mapping.select_prev_item(),
           ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs( -1)),
+          ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1)),
           ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1)),
           ---@diagnostic disable-next-line: missing-parameter
           ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -276,7 +261,7 @@ require("lazy").setup({
           -- Accept currently selected item. If none selected, `select` first item.
           -- Set `select` to `false` to only confirm explicitly selected items.
           ["<CR>"] = cmp.mapping.confirm { select = false },
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
+          ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expandable() then
@@ -293,8 +278,8 @@ require("lazy").setup({
           ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
-            elseif luasnip.jumpable( -1) then
-              luasnip.jump( -1)
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
             else
               fallback()
             end
@@ -303,11 +288,9 @@ require("lazy").setup({
               "s",
             }),
         },
-        formatting = {
-          format = function(_, vim_item)
-            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
-            return vim_item
-          end,
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
         },
         sources = {
           { name = "nvim_lsp" },
@@ -315,6 +298,13 @@ require("lazy").setup({
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
+        },
+        formatting = {
+          -- fields = { 'abbr' },
+          format = function(_, vim_item)
+            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+            return vim_item
+          end,
         },
         confirm_opts = {
           behavior = cmp.ConfirmBehavior.Replace,
@@ -343,7 +333,7 @@ require("lazy").setup({
 
   {
     'windwp/nvim-autopairs',
-    event="VeryLazy",
+    event = "VeryLazy",
     -- enabled = false,
     dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
@@ -377,6 +367,8 @@ require("lazy").setup({
   {"mbbill/undotree", event="VeryLazy"},
 
   {"nvim-tree/nvim-web-devicons", lazy=true},
+    -- This is only git plugin a user can need.
+    -- Although I provided more after.
   {"tpope/vim-fugitive", event="VeryLazy"},
 
   {
@@ -410,10 +402,10 @@ require("lazy").setup({
           -- close_icon = "",
           -- close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
           max_name_length = 18,
-          max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-          truncate_names = true, -- whether or not tab names should be truncated
+          max_prefix_length = 15,     -- prefix used when a buffer is de-duplicated
+          truncate_names = true,      -- whether or not tab names should be truncated
           tab_size = 18,
-          diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
+          diagnostics = "nvim_lsp",   -- | "nvim_lsp" | "coc",
           -- separator_style = "slant", -- | "thick" | "thin" | "slope" | { 'any', 'any' },
           separator_style = { "", "" }, -- | "thick" | "thin" | { 'any', 'any' },
           indicator = {
@@ -422,11 +414,11 @@ require("lazy").setup({
             -- style = "underline",
           },
 
-          numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+          numbers = "none",                      -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
           -- close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
           right_mouse_command = "vert sbuffer %d", -- can be a string | function, see "Mouse actions"
-          left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-          middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
+          left_mouse_command = "buffer %d",      -- can be a string | function, see "Mouse actions"
+          middle_mouse_command = nil,            -- can be a string | function, see "Mouse actions"
           -- NOTE: this plugin is designed with this icon in mind,
           -- and so changing this is NOT recommended, this is intended
           -- as an escape hatch for people who cannot bear it for whatever reason
@@ -465,7 +457,7 @@ require("lazy").setup({
       vim.cmd [[
             nnoremap <silent><TAB> :BufferLineCycleNext<CR>
             nnoremap <silent><S-TAB> :BufferLineCyclePrev<CR>
-]]
+            ]]
     end
   },
 
@@ -565,7 +557,7 @@ require("lazy").setup({
 
   {"lunarvim/darkplus.nvim", event="VeryLazy"},
   { "catppuccin/nvim", name = "catppuccin", priority = 1000, lazy=true },
-
+-- sleek git integration
   {
     "kdheepak/lazygit.nvim",
     -- optional for floating window border decoration
@@ -648,7 +640,7 @@ require("lazy").setup({
     end
   },
       -- AI code completion with Codeium
-  {
+  --[[ {
     "Exafunction/codeium.vim",
     event='BufEnter',
     config = function ()
@@ -658,7 +650,7 @@ require("lazy").setup({
       vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end
-  },
+  }, ]]
     -- ui for messages, commandline & the popupmenu
   {
     "folke/noice.nvim",
@@ -680,6 +672,29 @@ require("lazy").setup({
         theme = "nord",
       },
     },
+  },
+  -- Better help with code diagnostics
+  {
+    "folke/trouble.nvim",
+    event = "VeryLazy",
+    cmd = { "TroubleToggle", "Trouble" },
+
+    opts = {
+      use_diagnostic_signs = true,
+      action_keys = {
+        close = { "q", "<esc>" },
+        cancel = "<c-e>",
+      },
+    },
+  },
+  {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    optional = true,
+    opts = function(_, opts)
+      if not opts.bottom then opts.bottom = {} end
+      table.insert(opts.bottom, "Trouble")
+    end,
   },
 
 })
