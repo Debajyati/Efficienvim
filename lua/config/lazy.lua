@@ -109,7 +109,7 @@ require("lazy").setup({
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "python", "elixir", "javascript", "html", "go", "java", "typescript", "rust" },
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "elixir", "javascript", "html", "go", "java" },
         sync_install = false,
         auto_install = true,
         highlight = { enable = true, additional_vim_regex_highlighting = true, },
