@@ -636,7 +636,7 @@ require("lazy").setup({
       vim.fn.sign_define("DiagnosticSignHint",
         {text = "󰌵", texthl = "DiagnosticSignHint"})
 
-      vim.keymap.set('n', "<space>e",':Neotree reveal<cr>', {desc = "file explorer tree toggle"})
+      vim.keymap.set('n', "<space>e",':Neotree toggle<cr>', {desc = "file explorer tree toggle"})
     end
   },
       -- AI code completion with Codeium
