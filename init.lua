@@ -15,6 +15,7 @@ require("config.noicesettings")
 require("config.telescope")
 require("config.terminal")
 require("config.nvim-tree")
+require("config.notify-settings")
 
 -- Uncomment the next line to set the manual completion of Codeium AI as default
 -- vim.g.codeium_manual = true

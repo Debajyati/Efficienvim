@@ -268,7 +268,7 @@ require("lazy").setup({
           Namespace = "󰌗",
           Text = "󰉿",
           Method = "󰆧",
-          Function = "󰆧",
+          Function = "󰡱 ",
           Constructor = "",
           Field = "󰜢",
           Private = "",
@@ -289,23 +289,24 @@ require("lazy").setup({
           EnumMember = "",
           Constant = "󰏿",
           Struct = "󰙅",
-          Event = "",
+          Event = "",
           Operator = "󰆕",
           TypeParameter = "󰊄",
-          Table = "",
-          Object = "󰅩",
-          Tag = "",
+          Table = " ",
+          Object = "󰅩 ",
+          Tag = " ",
           Array = "[]",
-          Boolean = "",
-          Number = "",
-          Null = "󰟢",
-          String = "󰉿",
-          Calendar = "",
-          Watch = "󰥔",
-          Package = " ",
-          Copilot = "",
-          Codeium = "",
-          TabNine = "",
+          Boolean = " ",
+          Number = " ",
+          Null = "󰟢 ",
+          String = " ",
+          Calendar = " ",
+          Watch = "󰥔 ",
+          Package = "󰏖 ",
+          Copilot = " ",
+          Codeium = " ",
+          TabNine = " ",
+          Supermaven = " ",
         }
 
         cmp.setup {
@@ -613,6 +614,23 @@ require("lazy").setup({
         end
       end
     },
+    {
+      "lewis6991/gitsigns.nvim",
+      event = "VeryLazy",
+      opts = {
+        signs = {
+          add = { text = " " },
+          change = { text = " " },
+          delete = { text = "󰍵" },
+          topdelete = { text = "‾" },
+          changedelete = { text = "~" },
+          untracked = { text = "│" },
+        },
+      },
+      config = function(_, opts)
+        require("gitsigns").setup(opts)
+      end,
+    },
 
     -- top-notch colorschemes
     { "notken12/base46-colors" },
@@ -642,7 +660,6 @@ require("lazy").setup({
     { "folke/tokyonight.nvim" },  ]]
     { "dgox16/oldworld.nvim" },
     { "eldritch-theme/eldritch.nvim" },
-    { "b0o/lavi.nvim", dependencies = {"rktjmp/lush.nvim"} },
     -- { "savq/melange-nvim" },
     { "Mofiqul/adwaita.nvim" },
     {
@@ -735,6 +752,7 @@ require("lazy").setup({
       dependencies = {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
         "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
       },
     },
     {
@@ -859,13 +877,15 @@ require("lazy").setup({
       "nvim-tree/nvim-tree.lua",
       name = 'nvim-tree',
     },
-    -- call ranger within Neovim
+    -- call lf within Neovim
     {
-    'kevinhwang91/rnvimr',
+    'ptzz/lf.vim',
+      dependencies = { 'voldikss/vim-floaterm' },
       config = function()
-        vim.keymap.set('n', '<leader>l', function()
-          vim.api.nvim_command 'RnvimrToggle'
-        end, { desc = "ranger from Neovim" })
+        vim.g.lf_map_keys = 0
+        vim.keymap.set("n", "<leader>lf", function()
+          vim.api.nvim_command("Lf")
+        end, { desc = "call lf within Neovim" })
       end,
     },
     -- automatic code execution other related works
