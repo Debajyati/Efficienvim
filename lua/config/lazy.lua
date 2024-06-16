@@ -433,6 +433,7 @@ require("lazy").setup({
     { "nvim-tree/nvim-web-devicons", lazy = true },
     {
       'akinsho/bufferline.nvim',
+      version = "*",
       -- enabled = false,
       dependencies = 'nvim-tree/nvim-web-devicons',
       event = "BufWinEnter",
