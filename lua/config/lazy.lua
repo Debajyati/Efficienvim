@@ -923,10 +923,26 @@ require("lazy").setup({
       opts = {},
     },
 
-    -- Color picker and highlighter plugin for Neovim
+    -- Color picker plugin for Neovim
     {
-      "uga-rosa/ccc.nvim",
-      event = "VeryLazy",
+      "ziontee113/color-picker.nvim",
+      config = function()
+        require("color-picker")
+      end,
+    },
+    -- Icon picker plugin for Neovim
+    {
+      "ziontee113/icon-picker.nvim",
+      dependencies = { "stevearc/dressing.nvim" },
+      config = function()
+        require("icon-picker").setup({ disable_legacy_commands = true })
+
+        local opts = { noremap = true, silent = true }
+
+        vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
+        vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
+        vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
+      end
     },
     --[[   -- replace strings in selected files using regex in your project directory
   { "nvim-pack/nvim-spectre", event = "VeryLazy"}, ]]
