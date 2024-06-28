@@ -678,18 +678,6 @@ require("lazy").setup({
       end,
     },
 
-    --[[   -- to enable AI code completion
-  {
-    "Exafunction/codeium.vim",
-    event='BufEnter',
-    config = function ()
-      -- Changed '<C-g>' here to '<C-y>' to make it work.
-      vim.keymap.set('i', '<C-y>', function() return vim.fn['codeium#Accept']() end, { expr = true })
-      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
-      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
-      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
-    end
-  }, ]]
     -- for better neovim built-in lsp experience
     {
       'nvimdev/lspsaga.nvim',
@@ -983,5 +971,31 @@ require("lazy").setup({
       dependencies = { "nvim-lua/plenary.nvim" },
       opts = {},
     },
+    -- to enable AI code completion through supermaven
+    {
+      "supermaven-inc/supermaven-nvim",
+      config = function()
+        require("supermaven-nvim").setup({
+          keymaps = {
+            accept_suggestion = "<Tab>",
+            clear_suggestion = "<C-x>",
+            accept_word = "<C-j>",
+          },
+        })
+        vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", {fg ="#6CC644"})
+      end,
+    },
+    -- to enable AI code completion through codeium
+--[[     {
+      "Exafunction/codeium.vim",
+      event = 'BufEnter',
+      config = function()
+        -- Changed '<C-g>' here to '<C-y>' to make it work.
+        vim.keymap.set('i', '<C-y>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+        vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+        vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+        vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+      end
+    }, ]]
   }
 })

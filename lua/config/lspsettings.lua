@@ -40,8 +40,9 @@ local cmp = require('cmp')
 
 cmp.setup({
   sources = {
-    {name = 'luasnip'},
-    {name = 'nvim_lsp'},
+    { name = 'luasnip' },
+    { name = 'nvim_lsp' },
+    { name = "supermaven" },
   },
   mapping = cmp.mapping.preset.insert({
     -- Enter key confirms completion item
