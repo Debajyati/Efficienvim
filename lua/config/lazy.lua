@@ -22,16 +22,14 @@ require("lazy").setup({
     backdrop = 100,
   },
   spec = {
+    -- for color highlighting
+    -- Tailwind Classes are also supported(properly colored)
     {
-      "NvChad/nvim-colorizer.lua",
-      opts = { user_default_options = { names = false } },
-      config = function(_, opts)
-        require("colorizer").setup(opts)
-
-        -- execute colorizer as soon as possible
-        vim.defer_fn(function()
-          require("colorizer").attach_to_buffer(0)
-        end, 0)
+      'brenoprata10/nvim-highlight-colors',
+      config = function()
+        require('nvim-highlight-colors').setup({
+          enable_tailwind = true,
+        })
       end,
     },
     -- Visible Indentation
@@ -73,12 +71,12 @@ require("lazy").setup({
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
       },
     },
-
+    -- for easy navigating between buffers and tmux windows
     {
       "christoomey/vim-tmux-navigator",
       lazy = false,
     },
-
+    -- for lsp configuration (Neovim's Native LSP client)
     {
       "neovim/nvim-lspconfig",
       event = { "BufReadPost", "BufNewFile" },
@@ -169,7 +167,7 @@ require("lazy").setup({
       },
     },
 
-    { {
+    { -- for better syntax highlighting
       "nvim-treesitter/nvim-treesitter",
       build = ":TSUpdate",
       lazy = false,
@@ -185,8 +183,7 @@ require("lazy").setup({
         })
       end
     },
-
-    },
+    -- for commenting lines and blocks of code
     {
       "numToStr/Comment.nvim",
       event = "VeryLazy",
@@ -238,6 +235,7 @@ require("lazy").setup({
       end
 
     },
+    -- for autocompletion
     {
       "hrsh7th/nvim-cmp",
       event = {
