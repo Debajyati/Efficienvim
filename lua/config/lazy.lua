@@ -929,6 +929,12 @@ require("lazy").setup({
       config = function()
         require("color-picker")
       end,
+      vim.keymap.set(
+        "n",
+        "<leader>cp",
+        "<cmd>PickColor<cr>",
+        { desc = "Pick Color" }
+      ) --> Paste the selected color into cursor position
     },
     -- Icon picker plugin for Neovim
     {
@@ -939,8 +945,18 @@ require("lazy").setup({
 
         local opts = { noremap = true, silent = true }
 
-        vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
-        vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
+        vim.keymap.set(
+          "n",
+          "<Leader><Leader>i",
+          "<cmd>IconPickerNormal<cr>",
+          opts
+        )
+        vim.keymap.set(
+          "n",
+          "<Leader><Leader>y",
+          "<cmd>IconPickerYank<cr>",
+          opts
+        ) --> Yank the selected icon into register
         vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
       end
     },
@@ -984,6 +1000,16 @@ require("lazy").setup({
       "folke/todo-comments.nvim",
       dependencies = { "nvim-lua/plenary.nvim" },
       opts = {},
+    },
+    -- for previewing markdown files
+    {
+      "ellisonleao/glow.nvim",
+      cmd = "Glow",
+      config = function()
+        require("glow").setup({
+          border = "rounded",
+        })
+      end,
     },
     -- to enable AI code completion through supermaven
     {
