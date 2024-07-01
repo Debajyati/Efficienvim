@@ -11,6 +11,8 @@ After installation, you should remove the `.git` folder so that you can add your
 - [Neovim 0.9+ (_Not_ including nightly)](https://github.com/neovim/neovim/releases/tag/stable)
 - gcc (GNU C Compiler)
 - node.js
+- [glow](https://github.com/charmbracelet/glow#installation) for markdown previews
+- [lf](https://github.com/gokcehan/lf) for using lf(terminal emulated file manager written in go) to navigate and preview files within Neovim.
 - A clipboard tool is necessary for the integration with the system clipboard (see [`:help clipboard-tool`](https://neovim.io/doc/user/provider.html#clipboard-tool) for supported solutions)
   - `xclip` is recommended for WSL users. 
 - Terminal with true color support (for the default theme, otherwise it is dependent on the theme you are using)
