@@ -12,7 +12,7 @@ After installation, you should remove the `.git` folder so that you can add your
 - gcc (GNU C Compiler)
 - node.js
 - [glow](https://github.com/charmbracelet/glow#installation) for markdown previews
-- [lf](https://github.com/gokcehan/lf) for using lf(terminal emulated file manager written in go) to navigate and preview files within Neovim.
+- [lf](https://github.com/gokcehan/lf) for using lf(terminal emulated file manager written in go) to navigate and preview files within Neovim. This stands for an alternative approach to using telescope, nvim-tree or Oil.nvim. Free to use any one of these tools at a moment. 
 - A clipboard tool is necessary for the integration with the system clipboard (see [`:help clipboard-tool`](https://neovim.io/doc/user/provider.html#clipboard-tool) for supported solutions)
   - `xclip` is recommended for WSL users. 
 - Terminal with true color support (for the default theme, otherwise it is dependent on the theme you are using)
@@ -28,7 +28,7 @@ So make sure when customising the configuration further, you don't set any keybi
       It uses `Neotree` plugin as its file-explorer(which is auto-opened at the left-side of the Neovim window at startup) instead of the `Netrw` file-exlorer that comes with Neovim. 
       It doesn't have any **dashboard**.
     - The `enhanced` branch is the more **advanced** (with more plugins as *enhanced* features) version.
-      It uses `Oil.nvim` plugin as its file-explorer(you will be able to edit the file system like a regular buffer).
+      It uses `Oil.nvim` plugin as its file-explorer(you will be able to edit the file system like a regular buffer) when you enter in Neovim through `nvim .`.
       It has a beautiful **dashboard** which opens at startup. 
 
 ## 🛠️ Installation
@@ -151,7 +151,15 @@ Run `:h Mason` for more info.
           ├── noicesettings.lua
           └── options.lua
 ```
-
+### About FileSystem Plugins
+Total 4 plugins are there for previewing and navigating files. `Nvim-tree`, `Oil.nvim`, `lf.vim` and `Telescope.nvim` .
+Oil.nvim only is auto triggered when you open a project folder by running `nvim .` instead of just `nvim` in the terminal.
+| FileSystem Plugin | Must Know Command | Keymaps |
+|:-----------------:|:-------:|:------:|                 
+| Oil.nvim  | `:Oil` | `<space>o` |
+| Nvim-tree | `:NvimTreeToggle` | `<space>e`,`<space>E` etc. |
+| Telescope.nvim | `:Telescope` | `<space>ff`, `<space>gf`, `<space>ps` etc. |
+| lf.vim | `:Lf` | `<space>lf` |
 ## Credits ✨
 
 Kudos to the entire neovim community out there, all the plugin authors & the following repositories that made me know, how to develop this starter configuration.
