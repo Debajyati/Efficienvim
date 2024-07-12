@@ -7,7 +7,7 @@ After installation, you should remove the `.git` folder so that you can add your
 ## 👀 Requirements
 
 - Make sure you know some basic vim commands.
-- [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+- [Nerd Fonts](https://www.nerdfonts.com/font-downloads), **IosevkaTermSlab Nerd Font**, **JetBrainsMono Nerd Font**, and **GoMono Nerd Font** are highly recommended.
 - [Neovim 0.9+ (_Not_ including nightly)](https://github.com/neovim/neovim/releases/tag/stable)
 - gcc (GNU C Compiler)
 - node.js
