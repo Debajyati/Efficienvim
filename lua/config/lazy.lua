@@ -508,7 +508,7 @@ require("lazy").setup({
           return
         end
 
-        vim.keymap.set({ "n", "t" }, opts.keymap, function()
+        vim.keymap.set("n", opts.keymap, function()
           exec_toggle { cmd = opts.cmd, count = opts.count, direction = opts.direction, size = opts.size() }
         end, { desc = opts.label, noremap = true, silent = true })
       end
