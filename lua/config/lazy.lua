@@ -76,6 +76,12 @@ require("lazy").setup({
       "christoomey/vim-tmux-navigator",
       lazy = false,
     },
+    -- for unix commands inside vim
+    {
+      "tpope/vim-eunuch",
+      event = "VeryLazy",
+    },
+
     -- for lsp configuration (Neovim's Native LSP client)
     {
       "neovim/nvim-lspconfig",
