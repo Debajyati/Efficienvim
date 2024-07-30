@@ -605,7 +605,6 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
       {
         's1n7ax/nvim-window-picker',
         version = '2.*',
@@ -637,7 +636,7 @@ require("lazy").setup({
       vim.fn.sign_define("DiagnosticSignHint",
         {text = "󰌵", texthl = "DiagnosticSignHint"})
 
-      vim.keymap.set('n', "<space>e",':Neotree toggle<cr>', {desc = "file explorer tree toggle"})
+      vim.keymap.set('n', "<space>e",'<cmd>Neotree toggle<cr>', {desc = "file explorer tree toggle"})
     end
   },
       -- AI code completion with Codeium
