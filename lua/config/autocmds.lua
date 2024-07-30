@@ -1,7 +1,7 @@
 -- Add any additional autocmds here
 
 -- setting colorscheme as default 
- vim.cmd [[colorscheme habamax]]
+vim.cmd [[colorscheme habamax]]
 
 vim.cmd("set number")
 vim.cmd("set cursorline")
@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("UiEnter", {
   group = "neotree",
   callback = function()
     if vim.fn.argc() == 0 then
-      vim.cmd "Neotree toggle"
+      vim.cmd [[Neotree toggle]]
     end
   end,
 })
