@@ -43,6 +43,6 @@ vim.opt.clipboard:append("unnamedplus") -- Kind of failsafe and also convenient!
 -- vim.api.nvim_set_keymap("v", "<C-c>", ":w !xclip -i -sel c<CR><CR>", { noremap = true })
 
 
-vim.cmd("set number")
+vim.cmd("set number relativenumber")
 vim.cmd("set cursorline")
 
