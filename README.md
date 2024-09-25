@@ -171,6 +171,8 @@ https://github.com/user-attachments/assets/4211acd5-d5b7-4029-9750-9e41a438bbe7
 ![Screenshot 2024-09-24 230223](https://github.com/user-attachments/assets/98ca220b-083f-4dbf-9735-58a8a3a1b45a)
 
 ### Changing Colorschemes with Live Preview
+https://github.com/user-attachments/assets/e08a659e-7fc9-46c8-bc0c-2a17798a5329
+
 
 
 ## Credits ✨
