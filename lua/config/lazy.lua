@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   -- bootstrap lazy.nvim
   -- stylua: ignore
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable",
@@ -318,6 +318,11 @@ require("lazy").setup({
             expand = function(args)
               luasnip.lsp_expand(args.body) -- For `luasnip` users.
             end,
+          },
+
+          window = {
+            completion = cmp.config.window.bordered( { border = "rounded" }),
+            documentation = cmp.config.window.bordered({ border = "double" }),
           },
 
           mapping = cmp.mapping.preset.insert {
@@ -932,6 +937,7 @@ require("lazy").setup({
     -- Color picker plugin for Neovim
     {
       "ziontee113/color-picker.nvim",
+      event = "VeryLazy",
       config = function()
         require("color-picker")
       end,
@@ -945,6 +951,7 @@ require("lazy").setup({
     -- Icon picker plugin for Neovim
     {
       "ziontee113/icon-picker.nvim",
+      event = "VeryLazy",
       dependencies = { "stevearc/dressing.nvim" },
       config = function()
         require("icon-picker").setup({ disable_legacy_commands = true })
@@ -984,6 +991,7 @@ require("lazy").setup({
     -- for formatting and linting
     {
       "nvimtools/none-ls.nvim",
+      event = "VeryLazy",
       dependencies = {
         "nvimtools/none-ls-extras.nvim",
         "gbprod/none-ls-shellcheck.nvim",
@@ -1025,6 +1033,7 @@ require("lazy").setup({
     -- for previewing markdown files
     {
       "ellisonleao/glow.nvim",
+      event = "VeryLazy",
       cmd = "Glow",
       config = function()
         require("glow").setup({
