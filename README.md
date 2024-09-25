@@ -152,21 +152,25 @@ Run `:h Mason` for more info.
 
 ## Enhanced Branch Showcases
 
+### Lazy.nvim UI with Rounded Borders
+![image](https://github.com/user-attachments/assets/e0657360-59e8-4525-b330-cfd2f68c89ce)
+
 ### Telescope Find Files
 https://github.com/user-attachments/assets/977a1170-e8ff-4c84-9312-0d7946163995
-
 
 ### Calling `lf` within neovim
 https://github.com/user-attachments/assets/d5cfbcd6-1a1f-4c2d-80bb-2d8fe5dcbb2f
 
-
 ### Using Oil.nvim
 https://github.com/user-attachments/assets/92b218bf-3bf6-4b3b-8b10-592ca24fb719
-
 
 ### Telescope Git Files
 https://github.com/user-attachments/assets/4211acd5-d5b7-4029-9750-9e41a438bbe7
 
+### File Explorer and Toggleterm
+![Screenshot 2024-09-24 230223](https://github.com/user-attachments/assets/98ca220b-083f-4dbf-9735-58a8a3a1b45a)
+
+### Changing Colorschemes with Live Preview
 
 
 ## Credits ✨
