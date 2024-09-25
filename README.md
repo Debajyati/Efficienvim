@@ -8,7 +8,7 @@ After installation, you should remove the `.git` folder so that you can add your
 
 - Make sure you know some basic vim commands.
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads), **IosevkaTermSlab Nerd Font**, **JetBrainsMono Nerd Font**, and **GoMono Nerd Font** are highly recommended.
-- [Neovim 0.10 or above (_Not including nightly)](https://github.com/neovim/neovim/releases/tag/stable)
+- [Neovim 0.10 or above (Not including nightly)](https://github.com/neovim/neovim/releases/tag/stable)
 - gcc (GNU C Compiler)
 - node.js
 - [glow](https://github.com/charmbracelet/glow#installation) for markdown previews
