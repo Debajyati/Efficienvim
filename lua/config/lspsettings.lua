@@ -6,7 +6,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
     local opts = {buffer = event.buf}
-
+    -- enable completion triggered by <C-x><C-o>
+    vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = event.buf })
     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
@@ -61,6 +62,8 @@ cmp.setup({
     end,
   },
 })
+
+require("lspconfig.ui.windows").default_options.border = "rounded"
 
 lspconfig.lua_ls.setup {
     capabilities = lsp_capabilities,
