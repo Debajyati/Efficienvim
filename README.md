@@ -172,6 +172,8 @@ https://github.com/user-attachments/assets/4211acd5-d5b7-4029-9750-9e41a438bbe7
 ### Changing Colorschemes with Live Preview
 https://github.com/user-attachments/assets/e08a659e-7fc9-46c8-bc0c-2a17798a5329
 
+### cmp window with borders
+![cmp window with borders](https://github.com/user-attachments/assets/c146f91f-b331-44cd-ba02-e2e12813d396)
 
 
 ## Credits ✨
