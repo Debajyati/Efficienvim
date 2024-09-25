@@ -1,4 +1,3 @@
-# Efficienvim - A Highly Efficient & Multifaceted Neovim Starter Configuration entirely in lua with Lazy.nvim
 ![Efficienvim Dashboard](https://github.com/Debajyati/Efficienvim/blob/main/Dashboard.png)
 
 Note: This is only a starter configuration to get started with Neovim with Efficiency & Enjoyment. 
