@@ -150,6 +150,8 @@ Run `:h Mason` for more info.
 ```
 
 ## Enhanced Branch Showcases
+### Efficienvim Dashboard in transparent/translucent terminal
+![image](https://github.com/user-attachments/assets/2df17d44-05d5-4972-9197-1bfe07215f4d)
 
 ### Lazy.nvim UI with Rounded Borders
 ![image](https://github.com/user-attachments/assets/e0657360-59e8-4525-b330-cfd2f68c89ce)
@@ -166,14 +168,17 @@ https://github.com/user-attachments/assets/92b218bf-3bf6-4b3b-8b10-592ca24fb719
 ### Telescope Git Files
 https://github.com/user-attachments/assets/4211acd5-d5b7-4029-9750-9e41a438bbe7
 
-### File Explorer and Toggleterm
+### Nvim-tree as File Explorer Sidebar and Toggleterm as Terminal
 ![Screenshot 2024-09-24 230223](https://github.com/user-attachments/assets/98ca220b-083f-4dbf-9735-58a8a3a1b45a)
 
 ### Changing Colorschemes with Live Preview
 https://github.com/user-attachments/assets/e08a659e-7fc9-46c8-bc0c-2a17798a5329
 
-### cmp window with borders
+### cmp window with borders for getting windows better distinguishable
 ![cmp window with borders](https://github.com/user-attachments/assets/c146f91f-b331-44cd-ba02-e2e12813d396)
+
+### cmdline completion
+![image](https://github.com/user-attachments/assets/ec476b05-8399-4372-860c-0be133be5a8f)
 
 
 ## Credits ✨
