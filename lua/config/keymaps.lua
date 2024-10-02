@@ -1,8 +1,5 @@
 -- Add any additional keymaps here
 
--- setting global mapleader
-vim.g.mapleader = " "
-
 -- Don't uncomment the line below if are using Neotree plugin as file explorer
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
