@@ -182,9 +182,10 @@ https://github.com/user-attachments/assets/e08a659e-7fc9-46c8-bc0c-2a17798a5329
 
 ## Credits ✨
 
-Kudos to the entire neovim community out there, all the plugin authors & the following repositories that made me know, how to develop this starter configuration.
+Kudos to the entire neovim community out there, all the plugin authors & the following repositories that made me know, how to properly configure Neovim.
 - [Lazy.nvim](https://github.com/folke/lazy.nvim)
 - [NVChad](https://github.com/NvChad/NvChad)
 - [AstroNvim](https://github.com/AstroNvim/AstroNvim)
 - [LunarVim](https://github.com/LunarVim/LunarVim)
 - [LazyVim](https://github.com/LazyVim/LazyVim)
+- [ThePrimeagen](https://github.com/ThePrimeagen/init.lua)
