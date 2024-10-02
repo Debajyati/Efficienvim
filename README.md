@@ -1,4 +1,3 @@
-# Efficienvim - A Highly Efficient & Multifaceted Neovim Starter Configuration entirely in lua with Lazy.nvim
 ![Efficienvim Dashboard](https://github.com/Debajyati/Efficienvim/blob/main/Dashboard.png)
 
 Note: This is only a starter configuration to get started with Neovim with Efficiency & Enjoyment. 
@@ -6,29 +5,25 @@ After installation, you should remove the `.git` folder so that you can add your
 
 ## 👀 Requirements
 
-- Make sure you know some basic vim commands.
-- [Nerd Fonts](https://www.nerdfonts.com/font-downloads), **IosevkaTermSlab Nerd Font**, **JetBrainsMono Nerd Font**, and **GoMono Nerd Font** are highly recommended.
-- [Neovim 0.10 or above (Not including nightly)](https://github.com/neovim/neovim/releases/tag/stable)
+- Make sure you know some basic vim commands and motions.
+- [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+- [Neovim 0.10 or above (_Not_ including nightly)](https://github.com/neovim/neovim/releases/tag/stable)
 - gcc (GNU C Compiler)
 - node.js
-- [glow](https://github.com/charmbracelet/glow#installation) for markdown previews
-- [lf](https://github.com/gokcehan/lf) for using lf(terminal emulated file manager written in go) to navigate and preview files within Neovim. This stands for an alternative approach to using telescope, nvim-tree or Oil.nvim. Free to use any one of these tools at a moment. 
 - A clipboard tool is necessary for the integration with the system clipboard (see [`:help clipboard-tool`](https://neovim.io/doc/user/provider.html#clipboard-tool) for supported solutions)
   - `xclip` is recommended for WSL users. 
 - Terminal with true color support (for the default theme, otherwise it is dependent on the theme you are using)
 - Optional Requirements:
   - [ripgrep](https://github.com/BurntSushi/ripgrep) - live grep telescope search (`<leader>ps`)
   - [lazygit](https://github.com/jesseduffield/lazygit) - lazygit ui toggle inside NeoVim (`:LazyGit`)
-  
 ### Note
-- The leader key is set as `<space>` key in the `keymaps.lua` file which loads and should always load after all the plugins are loaded. 
-So make sure when customising the configuration further, you don't set any keybinding involving the `<leader>` key in `lazy.lua`(which loads all the plugins).
-- Efficienvim has two versions. 
-    - The `main` branch is the **default** one that's the *ordinary*(user-friendlier) version.
-      It uses `Neotree` plugin as its file-explorer(which is auto-opened at the left-side of the Neovim window at startup) instead of the `Netrw` file-exlorer that comes with Neovim. 
-      It doesn't have any **dashboard**.
-    - The `enhanced` branch is the more **advanced** (with more plugins as *enhanced* features) version.
-      It uses `Oil.nvim` plugin as its file-explorer(you will be able to edit the file system like a regular buffer) when you enter in Neovim through `nvim .`.
+Efficienvim is available in two different versions. 
+  - The `main` branch is the **default** one that's the *ordinary* ***(easy to rewrite)*** version. 
+      It is the branch you are looking for if you want to get config as template and customise in beast mode based on your specific needs. 
+      It uses `Neotree` plugin as its file-explorer(which is auto-opened at the left-side of the Neovim window at startup) instead of the `Netrw` file-explorer that comes with Neovim. 
+      It doesn't have any **dashboard** that comes up start up.
+  - The `enhanced` branch is the more **advanced** (with more plugins as *better* features) and ***(user-friendlier)*** version.
+      It uses `Oil.nvim` (you will be able to edit the file system like a regular buffer) and `Nvim-tree` plugins as its file-explorers.
       It has a beautiful **dashboard** which opens at startup. 
 
 ## 🛠️ Installation
