@@ -18,11 +18,11 @@ After installation, you should remove the `.git` folder so that you can add your
   - [lazygit](https://github.com/jesseduffield/lazygit) - lazygit ui toggle inside NeoVim (`:LazyGit`)
 ### Note
 Efficienvim is available in two different versions. 
-    - The `main` branch is the **default** one that's the *ordinary* ***(easy to rewrite)*** version. 
+  - The `main` branch is the **default** one that's the *ordinary* ***(easy to rewrite)*** version. 
       It is the branch you are looking for if you want to get config as template and customise in beast mode based on your specific needs. 
       It uses `Neotree` plugin as its file-explorer(which is auto-opened at the left-side of the Neovim window at startup) instead of the `Netrw` file-explorer that comes with Neovim. 
       It doesn't have any **dashboard** that comes up start up.
-    - The `enhanced` branch is the more **advanced** (with more plugins as *better* features) and ***(user-friendlier)*** version.
+  - The `enhanced` branch is the more **advanced** (with more plugins as *better* features) and ***(user-friendlier)*** version.
       It uses `Oil.nvim` (you will be able to edit the file system like a regular buffer) and `Nvim-tree` plugins as its file-explorers.
       It has a beautiful **dashboard** which opens at startup. 
 
