@@ -3,9 +3,6 @@
 -- setting colorscheme as default 
 vim.cmd [[colorscheme habamax]]
 
-vim.cmd("set number")
-vim.cmd("set cursorline")
-
 -- Show neotree on startup
 vim.api.nvim_create_augroup("neotree", {})
 vim.api.nvim_create_autocmd("UiEnter", {
