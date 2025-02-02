@@ -7,11 +7,6 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-  -- using lazy to install lazy
-  {
-    "folke/lazy.nvim",
-    lazy = false,
-  },
 
   {
     'nvim-telescope/telescope.nvim',
@@ -39,18 +34,6 @@ require("lazy").setup({
     end,
     dependencies = {
       { "folke/neodev.nvim", opts = {} },
-      -- {
-      --   "j-hui/fidget.nvim", -- Useful status updates for LSP
-      --   config = function()
-      --     require("fidget").setup {
-      --       sources = { -- Sources to configure
-      --         jdtls = { -- Name of source
-      --           ignore = true, -- Ignore notifications from this source
-      --         },
-      --       },
-      --     }
-      --   end,
-      -- },
       {
         "williamboman/mason.nvim",
         cmd = {
@@ -60,7 +43,10 @@ require("lazy").setup({
           "MasonUninstallAll",
           "MasonLog",
         }, -- Package Manager
-        dependencies = "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+          { "williamboman/mason-lspconfig.nvim" },
+          { "stevearc/dressing.nvim" },
+        }
         config = function()
           local mason = require("mason")
           local mason_lspconfig = require("mason-lspconfig")
@@ -181,6 +167,7 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",       -- LSP Completions
       "hrsh7th/cmp-nvim-lua",       -- Lua Completions
       "hrsh7th/cmp-cmdline",        -- CommandLine Completions
+      "octaltree/cmp-look",           -- English Completions
       "L3MON4D3/LuaSnip",           -- Snippet Engine
       "rafamadriz/friendly-snippets", -- Bunch of Snippets
       "windwp/nvim-autopairs",      -- autopairs
@@ -297,6 +284,7 @@ require("lazy").setup({
           { name = "nvim_lua" },
           { name = "luasnip" },
           { name = "buffer" },
+          { name = "look" },
           { name = "path" },
         },
         formatting = {
@@ -696,7 +684,26 @@ require("lazy").setup({
       table.insert(opts.bottom, "Trouble")
     end,
   },
-
+  -- plugin to change surroundings of text/code
+  {
+    "kylechui/nvim-surround",
+    version = '*',
+    event = "VeryLazy",
+    opts = {},
+    config = function()
+      require("nvim-surround").setup({})
+    end
+  },
+  -- for splitting/joining blocks of code
+  {
+    'Wansmer/treesj',
+    event = "VeryLazy",
+    keys = { '<space>m', '<space>j', '<space>s' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesj').setup({ --[[ your config ]] })
+    end,
+  },  
 })
 
 
