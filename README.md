@@ -1,4 +1,4 @@
-![Efficienvim Dashboard](https://github.com/Debajyati/Efficienvim/blob/main/Dashboard.png)
+# ![Efficienvim Dashboard](https://github.com/Debajyati/Efficienvim/blob/main/Dashboard.png)
 
 Note: This is only a starter configuration to get started with Neovim with Efficiency & Enjoyment. 
 After installation, you should remove the `.git` folder so that you can add your own repo later and fully customise(ricing) your Neovim on your own liking & preferences.
