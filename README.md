@@ -1,5 +1,11 @@
 # ![Efficienvim Dashboard](https://github.com/Debajyati/Efficienvim/blob/main/Dashboard.png)
 
+> [!WARNING]
+> Efficienvim is no longer actively maintained.
+> The actively maintained faster and lighter starter config template is now **Efficienvchad**.
+> Head over to [Efficienvchad](https://github.com/Debajyati/Efficienvchad) to know more.
+
+
 Note: This is only a starter configuration to get started with Neovim with Efficiency & Enjoyment. 
 After installation, you should remove the `.git` folder so that you can add your own repo later and fully customise(ricing) your Neovim on your own liking & preferences.
 
